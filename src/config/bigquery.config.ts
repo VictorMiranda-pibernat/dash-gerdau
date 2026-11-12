@@ -1,7 +1,10 @@
-const DATASET = 'warehouse-pibernat.Sesiom_Drawback_Novo';
+
+const PROJECT_ID = 'warehouse-pibernat';
+const DATASET_ID = 'Sesiom_Drawback_Novo';
 
 export const BIGQUERY_CONFIG = {
-  dataset: DATASET,
+  projectId: PROJECT_ID,
+  datasetId: DATASET_ID,
 
   tables: {
     resumoImportacao: 'powerbi_pbt_drawback_resumo_imp',
@@ -9,6 +12,6 @@ export const BIGQUERY_CONFIG = {
     drawback: 'powerbi_pbt_drawback',
     processosImportacao: 'powerbi_pbt_drawback_proc_imp',
     notasFiscais: 'powerbi_pbt_drawback_nf',
-    importacao: 'powerbi_pbt_drawback',
+    importacao: 'powerbi_pbt_drawback_imp',
   },
 } as const;
