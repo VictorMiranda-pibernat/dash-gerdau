@@ -1,0 +1,29 @@
+
+import type { DrawbackProcImpRow } from '../../types/bigquery';
+
+export const drawbackProcImpMock: DrawbackProcImpRow[] = [
+  {
+    NUMERO_DRAWBACK: 'DBK-2026-001',
+    CLIENTE: 'Gerdau S.A.',
+    CLIENTE_CNPJ: '33611500000100',
+    PROCESSO_PO: 'PO-2026-001',
+    QTD_ESTATISTICA: 50000,
+    QTD_COMERCIALIZADA: 20000,
+    PESO_LIQUIDO: 50000,
+    NCM_CODIGO: '72083990',
+    NRO_ITEM: '001',
+    COD_PRODUTO: 'PRD-ACO-001',
+  },
+  {
+    NUMERO_DRAWBACK: 'DBK-2026-002',
+    CLIENTE: 'Aços Longos',
+    CLIENTE_CNPJ: '07358761000100',
+    PROCESSO_PO: 'PO-2026-002',
+    QTD_ESTATISTICA: 30000,
+    QTD_COMERCIALIZADA: 15000,
+    PESO_LIQUIDO: 30000,
+    NCM_CODIGO: '72142000',
+    NRO_ITEM: '002',
+    COD_PRODUTO: 'PRD-ACO-002',
+  },
+];

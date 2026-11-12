@@ -1,0 +1,27 @@
+
+import type { DrawbackResumoImpRow } from '../../types/bigquery';
+
+export const drawbackResumoImpMock: DrawbackResumoImpRow[] = [
+  {
+    NRO_ITEM_IMP: '001',
+    NUMERO_DRAWBACK: 'DBK-2026-001',
+    CLIENTE: 'Gerdau S.A.',
+    CLIENTE_CNPJ: '33611500000100',
+    NRO_DECLARACAO: 'DI-2026-001',
+    DATA_DESEMBARACO: '2026-02-05',
+    QUANTIDADE_INSUMO: 50000,
+    QUANTIDADE_EST_EXPDF: 50000,
+    QUANTIDADE_EST: 50000,
+  },
+  {
+    NRO_ITEM_IMP: '002',
+    NUMERO_DRAWBACK: 'DBK-2026-002',
+    CLIENTE: 'Aços Longos',
+    CLIENTE_CNPJ: '07358761000100',
+    NRO_DECLARACAO: 'DI-2026-002',
+    DATA_DESEMBARACO: '2026-04-12',
+    QUANTIDADE_INSUMO: 30000,
+    QUANTIDADE_EST_EXPDF: 30000,
+    QUANTIDADE_EST: 30000,
+  },
+];
