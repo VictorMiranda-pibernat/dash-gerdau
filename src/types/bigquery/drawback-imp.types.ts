@@ -1,0 +1,46 @@
+
+export interface DrawbackImpRow {
+  NUMERO_DRAWBACK: unknown;
+  CLIENTE: unknown;
+  CLIENTE_CNPJ: unknown;
+  NRO_DECLARACAO: unknown;
+  DATA_DECLARACAO: unknown;
+  DATA_DESEMBARACO: unknown;
+  NCM_CODIGO: unknown;
+  ADICAO_QTD_ESTATISTICA: unknown;
+  ADI_VMLE_USS: unknown;
+  QUANTIDADE_AUTORIZADA: unknown;
+  ITEM_VMLE_USS: unknown;
+  NRO_LI: unknown;
+  DATA_REGISTRO_LI: unknown;
+  SITUACAO_DI: unknown;
+  LI_QTD_ESTATISTICA: unknown;
+  LI_VMLE_USS: unknown;
+  NRO_ITEM: unknown;
+  VALOR_BASE_CALCULO_II: unknown;
+  ALIQUOTA_II: unknown;
+  VALOR_DEVIDO_II: unknown;
+  VALOR_CALCULADO_II: unknown;
+  VALOR_RECOLHER_II: unknown;
+  ALIQUOTA_IPI: unknown;
+  VALOR_DEVIDO_IPI: unknown;
+  ALIQUOTA_PIS: unknown;
+  VALOR_DEVIDO_PIS: unknown;
+  ALIQUOTA_COFINS: unknown;
+  VALOR_DEVIDO_COFINS: unknown;
+  VALOR_FRETE_RS: unknown;
+  VALOR_TAXA_SISCOMEX: unknown;
+  VIA_TRANSPORTE: unknown;
+  DATA_EMBARQUE: unknown;
+  DATA_CHEGADA: unknown;
+  URF_ENTRADA: unknown;
+  URF_ENTRADA_NOME: unknown;
+  URF_DESPACHO: unknown;
+  URF_DESPACHO_NOME: unknown;
+  AFRMM_ALIQUOTA: unknown;
+  ICMS_ALIQUOTA: unknown;
+  NOME_COMERCIAL: unknown;
+  PAIS_ORIGEM: unknown;
+  VALOR_FRETE_RS_MERCADORIA: unknown;
+  VALOR_SEGURO_MERCADORIA: unknown;
+}

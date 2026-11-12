@@ -1,0 +1,40 @@
+
+export interface DrawbackNfRow {
+  NUMERO_DRAWBACK: unknown;
+  CLIENTE: unknown;
+  CLIENTE_CNPJ: unknown;
+  NRO_ITEM: unknown;
+  DATA_EMISSAO: unknown;
+  NUMERO_NF: unknown;
+  CHAVE_NFE: unknown;
+  DESCRICAO: unknown;
+  NRO_NCM: unknown;
+  UNME_ESTATISTICA: unknown;
+  QUANTIDADE_ESTATISTICA: unknown;
+  UNME_COMERCIALIZADA: unknown;
+  QUANTIDADE_COMERCIALIZADA: unknown;
+  PESO_LIQUIDO: unknown;
+  VALOR_UNITARIO: unknown;
+  VALOR_DESPESA: unknown;
+  VALOR_TOTAL_NF: unknown;
+  ICMS_ORIG: unknown;
+  ICMS_CST: unknown;
+  ICMS_MODBC: unknown;
+  ICMS_VBC: unknown;
+  ICMS_PICMS: unknown;
+  ICMS_VICMS: unknown;
+  IPI_CENQ: unknown;
+  IPI_CST: unknown;
+  IPI_VBC: unknown;
+  IPI_PIPI: unknown;
+  IPI_VIPI: unknown;
+  PIS_CST: unknown;
+  PIS_VBC: unknown;
+  PIS_PPIS: unknown;
+  PIS_VPIS: unknown;
+  COFINS_CST: unknown;
+  COFINS_VBC: unknown;
+  COFINS_PCOFINS: unknown;
+  COFINS_VCOFINS: unknown;
+  PESO_LIQUIDO_NF: unknown;
+}
