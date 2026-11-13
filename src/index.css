@@ -1,2 +1,305 @@
 
 @import "tailwindcss";
+
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #202631;
+  background: #f4f5f7;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.brand-logo {
+  display: block;
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 360px;
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #000000;
+}
+
+/* MENU SUPERIOR */
+
+.topbar {
+  height: 66px;
+  min-height: 66px;
+  background: #11151d;
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  gap: 20px;
+  border-bottom: 1px solid #292e38;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #626b78 #11151d;
+}
+
+.nav-item {
+  height: 42px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #aeb8c7;
+  white-space: nowrap;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.nav-item:hover {
+  background: #252b36;
+  color: #ffffff;
+}
+
+.nav-item.active {
+  background: #303642;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.nav-icon {
+  font-size: 19px;
+  color: #b9c5d4;
+}
+
+.system-status {
+  height: 42px;
+  padding: 0 16px;
+  border: 1px solid #343b47;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #d8dee8;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e9b83f;
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+}
+
+/* HOME */
+
+.home-hero {
+  min-height: 520px;
+  height: calc(100vh - 140px);
+  max-height: 760px;
+  background: #ffffff;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 5px 22px rgba(20, 30, 45, 0.08);
+}
+
+.hero-blue {
+  width: 64%;
+  min-width: 55%;
+  background: #174d79;
+  border-bottom-right-radius: 30% 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 12px 0 25px rgba(0, 0, 0, 0.13);
+}
+
+.hero-title {
+  padding: 0 12%;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 65%;
+}
+
+.hero-title h1 {
+  font-size: clamp(42px, 5vw, 76px);
+  line-height: 1.03;
+  font-weight: 800;
+  letter-spacing: -3px;
+}
+
+.hero-title h1 span {
+  display: block;
+  color: #b9cce5;
+}
+
+.hero-title p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.hero-brand {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  gap: 24px;
+}
+
+.brand-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-symbol {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #e7b735;
+  color: #174d79;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.brand-name {
+  color: #174d79;
+  font-size: clamp(22px, 2.5vw, 36px);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.brand-line {
+  width: 2px;
+  height: 90px;
+  background: #e7b735;
+}
+
+.brand-caption {
+  color: #66717f;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* PÁGINAS INTERNAS */
+
+.page-placeholder {
+  min-height: 520px;
+  padding: 55px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 22px rgba(20, 30, 45, 0.06);
+}
+
+.page-label {
+  color: #a17c24;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.page-placeholder h1 {
+  margin-top: 18px;
+  color: #174d79;
+  font-size: 36px;
+}
+
+.page-placeholder p {
+  margin-top: 12px;
+  color: #697586;
+}
+
+/* RODAPÉ */
+
+.footer {
+  min-height: 40px;
+  padding: 10px 26px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #77818e;
+  font-size: 11px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 0 10px;
+    gap: 10px;
+  }
+
+  .system-status {
+    padding: 0 10px;
+  }
+
+  .main-content {
+    padding: 12px;
+  }
+
+  .home-hero {
+    min-height: 570px;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .hero-blue {
+    width: 100%;
+    min-width: 100%;
+    min-height: 350px;
+    border-bottom-right-radius: 45% 18%;
+  }
+
+  .hero-title {
+    padding: 45px 30px;
+    height: auto;
+    gap: 55px;
+  }
+
+  .hero-brand {
+    min-height: 210px;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+}

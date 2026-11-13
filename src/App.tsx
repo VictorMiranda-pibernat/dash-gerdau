@@ -1,121 +1,102 @@
+
+import gerdauLogo from './assets/gerdau-logo.png'
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import ControleGanhos from './pages/ControleGanhos'
+import './index.css'
+
+const paginas = [
+  'Home',
+  'Controle de Ganhos',
+  'Ganhos Mensais',
+  'Ganhos Provisionados',
+  'Controle de Saldo',
+  'Comprovação',
+  'Controle de Aditivos',
+  'Controle Cambial',
+  'Controle de Vencimentos',
+]
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [paginaAtiva, setPaginaAtiva] = useState('Home')
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app">
+      <header className="topbar">
+        <nav className="navigation">
+          {paginas.map((pagina, index) => (
+            <button
+              key={pagina}
+              className={`nav-item ${paginaAtiva === pagina ? 'active' : ''}`}
+              onClick={() => setPaginaAtiva(pagina)}
+            >
+              <span className="nav-icon">
+                {['⌂', '▥', '↗', '◷', '▤', '⇄', '✎', '◉', '◷'][index]}
+              </span>
+              {pagina}
+            </button>
+          ))}
+        </nav>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+        <div className="system-status">
+          <span className="status-dot" />
+          <span>Modo Mock</span>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <main className="main-content">
+        {paginaAtiva === 'Home' ? (
+          <section className="home-hero">
+            <div className="hero-blue">
+              <div className="hero-title">
+                <h1>
+                  Dashboard
+                  <span>Drawback</span>
+                </h1>
+
+                <p>
+                  BI de Gerenciamento | Drawback Gerdau
+                </p>
+              </div>
+            </div>
+
+            <div className="hero-brand">
+              <div className="brand-content">
+                {/* <span className="brand-symbol">G</span>
+                <span className="brand-name">GERDAU</span> */}
+              </div>
+
+              {/* <div className="brand-line" /> */}
+
+              <img
+                src={gerdauLogo}
+                alt="Logo Gerdau"
+                className="brand-logo"
+              />
+
+              <span className="brand-caption">
+                Inteligência e gestão de Drawback
+              </span>
+            </div>
+          </section>
+        ) : paginaAtiva === 'Controle de Ganhos' ? (
+          <ControleGanhos />
+        ) : (
+          <section className="page-placeholder">
+            <span className="page-label">GERDAU | DRAWBACK</span>
+            <h1>{paginaAtiva}</h1>
+            <p>
+              Área preparada para construção dos indicadores,
+              filtros, gráficos e tabelas deste módulo.
+            </p>
+          </section>
+        )}
+      </main>
+
+      <footer className="footer">
+        <span>GERDAU | BI DE GERENCIAMENTO</span>
+        <span>Desenvolvido por Victor Sarti Miranda</span>
+      </footer>
+    </div>
   )
 }
 
