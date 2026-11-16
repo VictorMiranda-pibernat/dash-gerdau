@@ -1,8 +1,10 @@
 
+import { useState } from 'react'
 import {
   ResponsiveContainer,
-  BarChart as RechartsBarChart,
+  ComposedChart,
   Bar,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -12,11 +14,16 @@ import {
 } from 'recharts'
 
 type DadoGrafico = Record<string, string | number | null | undefined>
+
 type SerieGrafico = {
   dataKey: string
   nome: string
   cor: string
+  tipo?: 'barra' | 'linha'
 }
+
+type ModoGrafico = 'combinada' | 'mensal' | 'acumulada'
+
 type BarChartProps = {
   titulo: string
   descricao?: string
@@ -54,6 +61,8 @@ function BarChart({
   series,
   formatarValor = moedaBR,
 }: BarChartProps) {
+  const [modo, setModo] = useState<ModoGrafico>('combinada')
+
   const formatarEixo = (valor: number) =>
     new Intl.NumberFormat('pt-BR', {
       notation: 'compact',
@@ -61,9 +70,10 @@ function BarChart({
     }).format(valor)
 
   const seriesValidas = Array.isArray(series)
-    ? series.filter((serie) =>
-        typeof serie?.dataKey === 'string' &&
-        serie.dataKey.trim() !== ''
+    ? series.filter(
+        (serie) =>
+          typeof serie?.dataKey === 'string' &&
+          serie.dataKey.trim() !== '',
       )
     : []
 
@@ -72,12 +82,16 @@ function BarChart({
         if (!registro || typeof registro !== 'object') return []
 
         const categoria = registro[categoriaKey]
-        if (categoria === null || categoria === undefined || String(categoria).trim() === '') {
+        if (
+          categoria === null ||
+          categoria === undefined ||
+          String(categoria).trim() === ''
+        ) {
           return []
         }
 
         const valores: Record<string, string | number> = {
-          [categoriaKey]: categoria,
+          [categoriaKey]: String(categoria),
         }
 
         let possuiValor = false
@@ -95,21 +109,62 @@ function BarChart({
       })
     : []
 
-  const possuiDados = dadosValidos.length > 0 && seriesValidas.length > 0
+  const seriesVisiveis = seriesValidas.filter((serie) => {
+    const tipo = serie.tipo ?? 'barra'
+
+    if (modo === 'mensal') return tipo === 'barra'
+    if (modo === 'acumulada') return tipo === 'linha'
+    return true
+  })
+
+  const possuiDados = dadosValidos.length > 0 && seriesVisiveis.length > 0
+
+  const estiloBotao = (ativo: boolean) =>
+    `rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
+      ativo
+        ? 'bg-blue-500/20 text-blue-300 ring-1 ring-blue-500/40'
+        : 'text-slate-400 hover:bg-slate-700/70 hover:text-slate-200'
+    }`
 
   return (
     <section className="rounded-2xl border border-slate-700/80 bg-slate-800/70 !p-5 shadow-lg shadow-black/10">
-      <div className="mb-5">
-        <h2 className="font-semibold text-white">{titulo}</h2>
-        {descricao && (
-          <p className="mt-1 text-xs text-slate-400">{descricao}</p>
-        )}
+      <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 className="font-semibold text-white">{titulo}</h2>
+          {descricao && (
+            <p className="mt-1 text-xs text-slate-400">{descricao}</p>
+          )}
+        </div>
+
+        <div className="flex flex-wrap gap-2 rounded-xl border border-slate-700 bg-slate-900/70 !p-2">
+          <button
+            type="button"
+            onClick={() => setModo('combinada')}
+            className={estiloBotao(modo === 'combinada')}
+          >
+            Combinada
+          </button>
+          <button
+            type="button"
+            onClick={() => setModo('mensal')}
+            className={estiloBotao(modo === 'mensal')}
+          >
+            Mensal
+          </button>
+          <button
+            type="button"
+            onClick={() => setModo('acumulada')}
+            className={estiloBotao(modo === 'acumulada')}
+          >
+            Acumulada
+          </button>
+        </div>
       </div>
 
       <div className="h-[320px] w-full">
         {possuiDados ? (
           <ResponsiveContainer width="100%" height="100%">
-            <RechartsBarChart
+            <ComposedChart
               data={dadosValidos}
               margin={{ top: 30, right: 15, left: 10, bottom: 35 }}
               barCategoryGap="25%"
@@ -119,6 +174,7 @@ function BarChart({
                 strokeDasharray="3 3"
                 vertical={false}
               />
+
               <XAxis
                 dataKey={categoriaKey}
                 tick={{ fill: '#94A3B8', fontSize: 11 }}
@@ -128,6 +184,7 @@ function BarChart({
                 textAnchor="end"
                 interval={0}
               />
+
               <YAxis
                 tickFormatter={formatarEixo}
                 tick={{ fill: '#94A3B8', fontSize: 11 }}
@@ -135,8 +192,11 @@ function BarChart({
                 tickLine={false}
                 width={65}
               />
+
               <Tooltip
-                formatter={(valor) => formatarValor(Number(valor ?? 0))}
+                formatter={(valor) =>
+                  formatarValor(Number(valor ?? 0))
+                }
                 contentStyle={{
                   backgroundColor: '#0F172A',
                   border: '1px solid #334155',
@@ -149,30 +209,54 @@ function BarChart({
                 }}
                 cursor={{ fill: 'rgba(148, 163, 184, 0.08)' }}
               />
+
               <Legend
                 verticalAlign="top"
                 height={35}
                 wrapperStyle={{ color: '#CBD5E1', fontSize: '12px' }}
               />
-              {seriesValidas.map((serie) => (
-                <Bar
-                  key={serie.dataKey}
-                  dataKey={serie.dataKey}
-                  name={serie.nome}
-                  fill={serie.cor}
-                  radius={[4, 4, 0, 0]}
-                  maxBarSize={55}
-                >
-                  <LabelList
+
+              {seriesVisiveis.map((serie) => {
+                const tipo = serie.tipo ?? 'barra'
+
+                if (tipo === 'linha') {
+                  return (
+                    <Line
+                      key={serie.dataKey}
+                      type="monotone"
+                      dataKey={serie.dataKey}
+                      name={serie.nome}
+                      stroke={serie.cor}
+                      strokeWidth={3}
+                      dot={{ r: 4, fill: serie.cor, strokeWidth: 0 }}
+                      activeDot={{ r: 6 }}
+                      connectNulls={false}
+                    />
+                  )
+                }
+
+                return (
+                  <Bar
+                    key={serie.dataKey}
                     dataKey={serie.dataKey}
-                    position="top"
-                    formatter={(valor) => formatarValor(Number(valor ?? 0))}
-                    fill="#E2E8F0"
-                    fontSize={10}
-                  />
-                </Bar>
-              ))}
-            </RechartsBarChart>
+                    name={serie.nome}
+                    fill={serie.cor}
+                    radius={[4, 4, 0, 0]}
+                    maxBarSize={55}
+                  >
+                    <LabelList
+                      dataKey={serie.dataKey}
+                      position="top"
+                      formatter={(valor) =>
+                        formatarValor(Number(valor ?? 0))
+                      }
+                      fill="#E2E8F0"
+                      fontSize={10}
+                    />
+                  </Bar>
+                )
+              })}
+            </ComposedChart>
           </ResponsiveContainer>
         ) : (
           <div className="flex h-full items-center justify-center text-sm text-slate-500">
