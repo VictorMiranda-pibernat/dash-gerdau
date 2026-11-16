@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 
 export type SelectOption = {
   label: string
@@ -17,5 +18,5 @@ export type DataTableColumn<T> = {
   key: keyof T
   label: string
   align?: 'left' | 'center' | 'right'
-  render?: (value: T[keyof T], row: T) => React.ReactNode
+  render?: (value: T[keyof T], row: T) => ReactNode
 }
