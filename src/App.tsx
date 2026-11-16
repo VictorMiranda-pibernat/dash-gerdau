@@ -3,6 +3,7 @@ import { useState } from 'react'
 import gerdauLogo from './assets/gerdau-logo.png'
 import ControleGanhos from './pages/ControleGanhos'
 import ControleGanhosMensaisImportado from './pages/ControleGanhosMensaisImportado'
+import GanhosMensaisNacional from './pages/GanhosMensaisNacional'
 import './index.css'
 
 const paginasOperacionais = [
@@ -102,6 +103,8 @@ function App() {
           <ControleGanhos />
         ) : paginaAtiva === 'Controle de Ganhos Mensais Importado' ? (
           <ControleGanhosMensaisImportado />
+        ) : paginaAtiva === 'Ganhos Mensais Nacional' ? (
+          <GanhosMensaisNacional />
         ) : (
           <section className="page-placeholder">
             <span className="page-label">GERDAU | DRAWBACK</span>
