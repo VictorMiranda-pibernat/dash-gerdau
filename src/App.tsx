@@ -4,6 +4,8 @@ import gerdauLogo from './assets/gerdau-logo.png'
 import ControleGanhos from './pages/ControleGanhos'
 import ControleGanhosMensaisImportado from './pages/ControleGanhosMensaisImportado'
 import GanhosMensaisNacional from './pages/GanhosMensaisNacional'
+import GanhosProvisionados from './pages/GanhosProvisionados'
+
 import './index.css'
 
 const paginasOperacionais = [
@@ -105,12 +107,15 @@ function App() {
           <ControleGanhosMensaisImportado />
         ) : paginaAtiva === 'Ganhos Mensais Nacional' ? (
           <GanhosMensaisNacional />
-        ) : (
-          <section className="page-placeholder">
-            <span className="page-label">GERDAU | DRAWBACK</span>
-            <h1>{paginaAtiva}</h1>
-            <p>Área preparada para construção dos indicadores, filtros, gráficos e tabelas deste módulo.</p>
-          </section>
+        ) : paginaAtiva === 'Ganhos Provisionados' ? (
+        <GanhosProvisionados />
+        ) :  (
+
+        <section className="page-placeholder">
+          <span className="page-label">GERDAU | DRAWBACK</span>
+          <h1>{paginaAtiva}</h1>
+          <p>Área preparada para construção dos indicadores, filtros, gráficos e tabelas deste módulo.</p>
+        </section>
         )}
       </main>
 
