@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import gerdauLogo from './assets/gerdau-logo.png'
 import ControleGanhos from './pages/ControleGanhos'
+import ControleGanhosMensaisImportado from './pages/ControleGanhosMensaisImportado'
 import './index.css'
 
 const paginasOperacionais = [
@@ -91,18 +92,16 @@ function App() {
                 <p>BI de Gerenciamento | Drawback Gerdau</p>
               </div>
             </div>
-
             <div className="hero-brand">
-              <div className="brand-content">
-                {/* <span className="brand-symbol">G</span><span className="brand-name">GERDAU</span> */}
-              </div>
-              {/* <div className="brand-line" /> */}
+              <div className="brand-content" />
               <img src={gerdauLogo} alt="Logo Gerdau" className="brand-logo" />
               <span className="brand-caption">Inteligência e gestão de Drawback</span>
             </div>
           </section>
         ) : paginaAtiva === 'Controle de Ganhos Gerais' ? (
           <ControleGanhos />
+        ) : paginaAtiva === 'Controle de Ganhos Mensais Importado' ? (
+          <ControleGanhosMensaisImportado />
         ) : (
           <section className="page-placeholder">
             <span className="page-label">GERDAU | DRAWBACK</span>
