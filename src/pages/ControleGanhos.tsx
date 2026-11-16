@@ -325,10 +325,10 @@ function ControleGanhos() {
           <h2 className="text-lg font-semibold text-white">Ganhos por insumo</h2>
           <p className="mt-1 text-sm text-slate-400">Comparação dos valores realizados e estimados para cada insumo.</p>
         </div>
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-3">
-          <BarChart titulo="Saving por insumo" descricao="Valores de Saving" dados={dadosSavingInsumo} categoriaKey="insumo" series={seriesSaving} />
-          <BarChart titulo="Cash por insumo" descricao="Valores de Cash" dados={dadosCashInsumo} categoriaKey="insumo" series={seriesCash} />
-          <BarChart titulo="ICMS por insumo" descricao="Valores de ICMS" dados={dadosIcmsInsumo} categoriaKey="insumo" series={seriesIcms} />
+        <div className="grid grid-cols-1 gap-6">
+          <BarChart titulo="Saving por insumo" descricao="Valores de Saving" dados={dadosSavingInsumo} categoriaKey="insumo" series={seriesSaving} altura={420} />
+          <BarChart titulo="Cash por insumo" descricao="Valores de Cash" dados={dadosCashInsumo} categoriaKey="insumo" series={seriesCash} altura={420} />
+          <BarChart titulo="ICMS por insumo" descricao="Valores de ICMS" dados={dadosIcmsInsumo} categoriaKey="insumo" series={seriesIcms} altura={420} />
         </div>
       </section>
 

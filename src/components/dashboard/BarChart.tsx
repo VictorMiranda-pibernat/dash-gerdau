@@ -31,6 +31,7 @@ type BarChartProps = {
   categoriaKey: string
   series?: SerieGrafico[]
   formatarValor?: (valor: number) => string
+  altura?: number
 }
 
 const moedaBR = (valor: number) =>
@@ -60,6 +61,7 @@ function BarChart({
   categoriaKey,
   series,
   formatarValor = moedaBR,
+   altura = 320,
 }: BarChartProps) {
   const [modo, setModo] = useState<ModoGrafico>('combinada')
 
@@ -161,12 +163,12 @@ function BarChart({
         </div>
       </div>
 
-      <div className="h-[320px] w-full">
+      <div className="w-full" style={{ height: altura }}>
         {possuiDados ? (
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
               data={dadosValidos}
-              margin={{ top: 30, right: 15, left: 10, bottom: 35 }}
+              margin={{ top: 30, right: 25, left: 10, bottom: 65 }}
               barCategoryGap="25%"
             >
               <CartesianGrid
