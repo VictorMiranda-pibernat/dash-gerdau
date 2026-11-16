@@ -112,8 +112,8 @@ function BarChart({
   const seriesVisiveis = seriesValidas.filter((serie) => {
     const tipo = serie.tipo ?? 'barra'
 
-    if (modo === 'mensal') return tipo === 'barra'
-    if (modo === 'acumulada') return tipo === 'linha'
+    if (modo === 'mensal') return tipo === 'linha'
+    if (modo === 'acumulada') return tipo === 'barra'
     return true
   })
 

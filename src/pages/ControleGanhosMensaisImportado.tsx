@@ -226,8 +226,8 @@ const somar = (registros: RegistroImportado[], campo: CampoValor): number =>
   registros.reduce((total, registro) => total + (obterValor(registro, campo) ?? 0), 0)
 
 const seriesMensais = (cor: string, corAcumulado: string) => [
-  { dataKey: 'realizado', nome: 'Realizado no mês', cor, tipo: 'barra' as const,},
-  {dataKey: 'acumulado', nome: 'Acumulado no período', cor: corAcumulado, tipo: 'linha' as const,},
+{ dataKey: 'acumulado', nome: 'Acumulado no período', cor: corAcumulado, tipo: 'barra' as const },
+  { dataKey: 'realizado', nome: 'Realizado no mês', cor, tipo: 'linha' as const },
 ]
 
 function ControleGanhosMensaisImportado() {
