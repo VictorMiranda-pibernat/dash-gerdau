@@ -5,6 +5,7 @@ import ControleGanhos from './pages/ControleGanhos'
 import ControleGanhosMensaisImportado from './pages/ControleGanhosMensaisImportado'
 import GanhosMensaisNacional from './pages/GanhosMensaisNacional'
 import GanhosProvisionados from './pages/GanhosProvisionados'
+import ControleSaldo from './pages/ControleSaldo'
 
 import './index.css'
 
@@ -108,8 +109,9 @@ function App() {
         ) : paginaAtiva === 'Ganhos Mensais Nacional' ? (
           <GanhosMensaisNacional />
         ) : paginaAtiva === 'Ganhos Provisionados' ? (
-        <GanhosProvisionados />
-        ) :  (
+          <GanhosProvisionados />
+        ) :  paginaAtiva === 'Controle de Saldo' ? (
+        <ControleSaldo /> ) : (
 
         <section className="page-placeholder">
           <span className="page-label">GERDAU | DRAWBACK</span>
