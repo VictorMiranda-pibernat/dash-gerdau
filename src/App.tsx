@@ -8,6 +8,8 @@ import GanhosProvisionados from './pages/GanhosProvisionados'
 import ControleSaldo from './pages/ControleSaldo'
 import Comprovacao from './pages/Comprovacao'
 import ControleAditivos from './pages/ControleAditivos'
+import ControleCambial from './pages/ControleCambial'
+import ControleVencimentos from './pages/ControleVencimentos'
 
 import './index.css'
 
@@ -117,7 +119,12 @@ function App() {
         ) : paginaAtiva === 'Comprovação' ? (
           <Comprovacao />
         ) : paginaAtiva === 'Controle de Aditivos' ? (
-          <ControleAditivos />) : (
+          <ControleAditivos />
+         ) : paginaAtiva === 'Controle Cambial' ? (
+          <ControleCambial />
+        ) : paginaAtiva === 'Controle de Vencimentos' ? (
+          <ControleVencimentos />
+        ) : (
 
           <section className="page-placeholder">
             <span className="page-label">GERDAU | DRAWBACK</span>
