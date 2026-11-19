@@ -1,6 +1,7 @@
 
 import { useState } from 'react'
 import gerdauLogo from './assets/gerdau-logo.png'
+import piberLogo from './assets/piber-logo.png'
 import ControleGanhos from './pages/ControleGanhos'
 import ControleGanhosMensaisImportado from './pages/ControleGanhosMensaisImportado'
 import GanhosMensaisNacional from './pages/GanhosMensaisNacional'
@@ -103,6 +104,7 @@ function App() {
             <div className="hero-brand">
               <div className="brand-content" />
               <img src={gerdauLogo} alt="Logo Gerdau" className="brand-logo" />
+              <img src={piberLogo} alt="Logo Piber" className="brand-logo" />
               <span className="brand-caption">Inteligência e gestão de Drawback</span>
             </div>
           </section>
